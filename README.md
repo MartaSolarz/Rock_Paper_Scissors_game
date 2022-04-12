@@ -1,6 +1,10 @@
 # Rock_Paper_Scissors_game #
 Stone paper scissors game for three wins.
 
+![Image](https://th.bing.com/th/id/OIP.IjdRh14eEqu5YVbZDJD09AHaE7?pid=ImgDet&rs=1)
+
+Source: *https://th.bing.com/th/id/OIP.IjdRh14eEqu5YVbZDJD09AHaE7?pid=ImgDet&rs=1*
+
 ## Table of contents: ##
 1. General information and game rules
 2. Code information
@@ -19,3 +23,7 @@ The player who gets the number of points agreed in advance wins the game.
 ### 2. Code information ###
 
 The code describes a rock paper scissors game for three wins. It allows the user to choose a move, and also informs the player what the computer has drawn and what the current game result is. The code will be corrected and shortened in the future.
+
+**[More information]**(https://en.wikipedia.org/wiki/Rock_paper_scissors)
+
+**Author:** Marta Solarz
