@@ -24,6 +24,6 @@ The player who gets the number of points agreed in advance wins the game.
 
 The code describes a rock paper scissors game for three wins. It allows the user to choose a move, and also informs the player what the computer has drawn and what the current game result is. The code will be corrected and shortened in the future.
 
-**[More information]**(https://en.wikipedia.org/wiki/Rock_paper_scissors)
+**[More information](https://en.wikipedia.org/wiki/Rock_paper_scissors)**
 
 **Author:** Marta Solarz
