@@ -21,9 +21,6 @@ runda5_user = []
 
 user_choice = runda1_user.append(input('Podaj kamień, papier czy nożyce: '))
 
-#if user_choice != 'kamień' or user_choice != 'papier' or user_choice != 'nożyce':
-
-
 print('Komputer wylosował:', runda1_computer[0])
 
 i = 0
