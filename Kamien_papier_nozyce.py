@@ -1,4 +1,5 @@
 # Gra "Kamień, papier, nożyce" - do trzech wygranych
+# "Rock, paper, scissors game" - up to three wins
 
 import random as rnd
 
