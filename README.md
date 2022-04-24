@@ -1,4 +1,4 @@
-# Rock_Paper_Scissors_game #
+# Rock Paper Scissors game #
 Stone paper scissors game for three wins.
 
 ![Image](https://th.bing.com/th/id/OIP.IjdRh14eEqu5YVbZDJD09AHaE7?pid=ImgDet&rs=1)
