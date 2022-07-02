@@ -1,5 +1,5 @@
 # Rock Paper Scissors Game #
-### Stone paper scissors game for three wins. ###
+### *Stone paper scissors game for three wins.* ###
 
 ![Image](https://th.bing.com/th/id/OIP.IjdRh14eEqu5YVbZDJD09AHaE7?pid=ImgDet&rs=1)
 
@@ -8,6 +8,7 @@ Source: *https://th.bing.com/th/id/OIP.IjdRh14eEqu5YVbZDJD09AHaE7?pid=ImgDet&rs=
 ## Table of contents: ##
 1. General information and game rules.
 2. Code information.
+3. Python modules used.
 
 ### 1. General information and game rules. ###
 
@@ -26,4 +27,8 @@ The code describes a rock paper scissors game for three wins. It allows the user
 
 **[More information](https://en.wikipedia.org/wiki/Rock_paper_scissors)**
 
-**Author:** Marta Solarz
+### 3. Python modules used. ###
+
+* random
+
+*Author: Marta Solarz*
