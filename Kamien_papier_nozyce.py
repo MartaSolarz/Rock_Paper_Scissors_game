@@ -1,4 +1,5 @@
 # Kamień, papier, nożyce - 15.07.2022
+# Rock - K; Paper - P; Scissors - N
 
 import random as rnd
 
