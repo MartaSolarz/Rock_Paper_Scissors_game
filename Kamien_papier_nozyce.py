@@ -1,310 +1,64 @@
-# Gra "Kamień, papier, nożyce" - do trzech wygranych
-# "Rock, paper, scissors game" - up to three wins
+# Kamień, papier, nożyce - 15.07.2022
 
 import random as rnd
 
-possible_move = ['kamień', 'papier', 'nożyce']
+RULES = 3
 
-runda1_computer = rnd.choices(possible_move, k=10)
-runda1_user = []
+moves = ['K', 'P', 'N']
+win_combinations = [('K', 'P'), ('P', 'N'), ('N', 'K')]  # (comp, user)
+lose_combinations = [('P', 'K'), ('N', 'P'), ('K', 'N')]  # (comp, user)
 
-runda2_computer = rnd.choices(possible_move, k=10)
-runda2_user = []
+def comp_choice():
+    comp_move = rnd.choices(moves)
+    return comp_move[0]
 
-runda3_computer = rnd.choices(possible_move, k=10)
-runda3_user = []
 
-runda4_computer = rnd.choices(possible_move, k=10)
-runda4_user = []
-
-runda5_computer = rnd.choices(possible_move, k=10)
-runda5_user = []
-
-user_choice = runda1_user.append(input('Podaj kamień, papier czy nożyce: '))
-
-print('Komputer wylosował:', runda1_computer[0])
-
-i = 0
-while runda1_user[i] == runda1_computer[i]:
-    print('Remis - 0:0')
-    runda1_user.append(input('Podaj kamień, papier czy nożyce: '))
-    i = i+1
-    print('Komputer wylosował:', runda1_computer[i])
-
-if (runda1_user[-1] == 'kamień' and runda1_computer[i] == 'papier') or (runda1_user[-1] == 'papier' and runda1_computer[i] == 'nożyce') or (runda1_user[-1] == 'nożyce' and runda1_computer[i] == 'kamień'):
-    print('Przegrałeś! - 0:1')
-    runda2_user.append(input('Podaj kamień, papier czy nożyce: '))
-    print('Komputer wylosował:', runda2_computer[0])
-
-    i = 0
-    while runda2_user[i] == runda2_computer[i]:
-        print('Remis - nadal 0:1')
-        runda2_user.append(input('Podaj kamień, papier czy nożyce: '))
-        i = i+1
-        print('Komputer wylosował:', runda2_computer[i])
-
-    if (runda2_user[-1] == 'kamień' and runda2_computer[i] == 'papier') or (runda2_user[-1] == 'papier' and runda2_computer[i] == 'nożyce') or (runda2_user[-1] == 'nożyce' and runda2_computer[i] == 'kamień'):
-        print('Przegrałeś! - 0:2')
-        runda3_user.append(input('Podaj kamień, papier czy nożyce: '))
-        print('Komputer wylosował:', runda3_computer[0])
-
-        i = 0
-        while runda3_user[i] == runda3_computer[i]:
-            print('Remis - nadal 0:2')
-            runda3_user.append(input('Podaj kamień, papier czy nożyce: '))
-            i = i+1
-            print('Komputer wylosował:', runda3_computer[i])
-
-        if (runda3_user[-1] == 'kamień' and runda3_computer[i] == 'papier') or (runda3_user[-1] == 'papier' and runda3_computer[i] == 'nożyce') or (runda3_user[-1] == 'nożyce' and runda3_computer[i] == 'kamień'):
-            print('Przegrałeś! - 0:3')
-            print('KONIEC GRY')
+def user_choice():
+    while True:
+        choice = input('Podaj K/P/N: ')
+        if choice.upper() in moves:
+            return choice.upper()
+            break
         else:
-            print('Wygrałeś! - 1:2')
-            runda4_user.append(input('Podaj kamień, papier czy nożyce: '))
-            print('Komputer wylosował:', runda4_computer[0])
+            print('Podaj poprawną wartość - dozwolone wartości: K/P/N')
 
-            i = 0
-            while runda4_user[i] == runda4_computer[i]:
-                print('Remis - nadal 1:2')
-                runda4_user.append(input('Podaj kamień, papier czy nożyce: '))
-                i = i+1
-                print('Komputer wylosował:', runda4_computer[i])
 
-            if (runda4_user[-1] == 'kamień' and runda4_computer[i] == 'papier') or (runda4_user[-1] == 'papier' and runda4_computer[i] == 'nożyce') or (runda4_user[-1] == 'nożyce' and runda4_computer[i] == 'kamień'):
-                print('Przegrałeś! - 1:3')
-                print('KONIEC GRY')
-            else:
-                print('Wygrałeś! - 2:2')
-                runda5_user.append(input('Podaj kamień, papier czy nożyce: '))
-                print('Komputer wylosował:', runda5_computer[0])
-                
-                i = 0
-                while runda5_user[i] == runda5_computer[i]:
-                    print('Remis - nadal 2:2')
-                    runda5_user.append(input('Podaj kamień, papier czy nożyce: '))
-                    i = i+1
-                    print('Komputer wylosował:', runda5_computer[i])
+def final_raport(counter_user:int, counter_com:int) -> None:
 
-                if (runda5_user[-1] == 'kamień' and runda5_computer[i] == 'papier') or (runda5_user[-1] == 'papier' and runda5_computer[i] == 'nożyce') or (runda5_user[-1] == 'nożyce' and runda5_computer[i] == 'kamień'):
-                    print('Przegrałeś! - 2:3')
-                    print('KONIEC GRY')
-                else:
-                    print('Wygrałeś! - 3:2')
-                    print('KONIEC GRY')
+    print('-----------')
+    print('Koniec gry!')
+    print()
 
+    if counter_user == RULES:
+        print(f'Gratulacje! Wygrałeś {counter_user}:{counter_com}')
     else:
-        print('Wygrałeś! - 1:1')
-        runda3_user.append(input('Podaj kamień, papier czy nożyce: '))
-        print('Komputer wylosował:', runda3_computer[0])
+        print(f'Przegrałeś! {counter_user}:{counter_com}')
 
-        i = 0
-        while runda3_user[i] == runda3_computer[i]:
-            print('Remis - nadal 1:1')
-            runda3_user.append(input('Podaj kamień, papier czy nożyce: '))
-            i = i+1
-            print('Komputer wylosował:', runda3_computer[i])
 
-        if (runda3_user[-1] == 'kamień' and runda3_computer[i] == 'papier') or (runda3_user[-1] == 'papier' and runda3_computer[i] == 'nożyce') or (runda3_user[-1] == 'nożyce' and runda3_computer[i] == 'kamień'):
-            print('Przegrałeś! - 1:2')
-            runda4_user.append(input('Podaj kamień, papier czy nożyce: '))
-            print('Komputer wylosował:', runda4_computer[0])
+def main():
+    counter_com = 0
+    counter_user = 0
 
-            i = 0
-            while runda4_user[i] == runda4_computer[i]:
-                print('Remis - nadal 1:2')
-                runda4_user.append(input('Podaj kamień, papier czy nożyce: '))
-                i = i+1
-                print('Komputer wylosował:', runda4_computer[i])
+    while True:
+        if counter_com == RULES or counter_user == RULES:
+            break
+        
+        comp_move = comp_choice()
+        user_move = user_choice()
 
-            if (runda4_user[-1] == 'kamień' and runda4_computer[i] == 'papier') or (runda4_user[-1] == 'papier' and runda4_computer[i] == 'nożyce') or (runda4_user[-1] == 'nożyce' and runda4_computer[i] == 'kamień'):
-                print('Przegrałeś! - 1:3')
-                print('KONIEC GRY')
-            else:
-                print('Wygrałeś! - 2:2')
-                runda5_user.append(input('Podaj kamień, papier czy nożyce: '))
-                print('Komputer wylosował:', runda5_computer[0])
-                
-                i = 0
-                while runda5_user[i] == runda5_computer[i]:
-                    print('Remis - nadal 2:2')
-                    runda5_user.append(input('Podaj kamień, papier czy nożyce: '))
-                    i = i+1
-                    print('Komputer wylosował:', runda5_computer[i])
-
-                if (runda5_user[-1] == 'kamień' and runda5_computer[i] == 'papier') or (runda5_user[-1] == 'papier' and runda5_computer[i] == 'nożyce') or (runda5_user[-1] == 'nożyce' and runda5_computer[i] == 'kamień'):
-                    print('Przegrałeś! - 2:3')
-                    print('KONIEC GRY')
-                else:
-                    print('Wygrałeś! - 3:2')
-                    print('KONIEC GRY')
+        print('Komputer wylosował:', comp_move)
+        
+        if (comp_move, user_move) in win_combinations:
+            counter_user += 1
+            print(f'Wygrałeś rundę! {counter_user}:{counter_com}')
+        elif (comp_move, user_move) in lose_combinations:
+            counter_com += 1
+            print(f'Przegrałeś rundę! {counter_user}:{counter_com}')
         else:
-            print('Wygrałeś! - 2:1')
-            runda4_user.append(input('Podaj kamień, papier czy nożyce: '))
-            print('Komputer wylosował:', runda4_computer[0])
+            print(f'Remis {counter_user}:{counter_com}')
 
-            i = 0
-            while runda4_user[i] == runda4_computer[i]:
-                print('Remis - nadal 2:1')
-                runda4_user.append(input('Podaj kamień, papier czy nożyce: '))
-                i = i+1
-                print('Komputer wylosował:', runda4_computer[i])
+    final_raport(counter_user, counter_com)
 
-            if (runda4_user[-1] == 'kamień' and runda4_computer[i] == 'papier') or (runda4_user[-1] == 'papier' and runda4_computer[i] == 'nożyce') or (runda4_user[-1] == 'nożyce' and runda4_computer[i] == 'kamień'):
-                print('Przegrałeś! - 2:2')
-                runda5_user.append(input('Podaj kamień, papier czy nożyce: '))
-                print('Komputer wylosował:', runda5_computer[0])
-                
-                i = 0
-                while runda5_user[i] == runda5_computer[i]:
-                    print('Remis - nadal 2:2')
-                    runda5_user.append(input('Podaj kamień, papier czy nożyce: '))
-                    i = i+1
-                    print('Komputer wylosował:', runda5_computer[i])
 
-                if (runda5_user[-1] == 'kamień' and runda5_computer[i] == 'papier') or (runda5_user[-1] == 'papier' and runda5_computer[i] == 'nożyce') or (runda5_user[-1] == 'nożyce' and runda5_computer[i] == 'kamień'):
-                    print('Przegrałeś! - 2:3')
-                    print('KONIEC GRY')
-                else:
-                    print('Wygrałeś! - 3:2')
-                    print('KONIEC GRY')
-            else:
-                print('Wygrałeś! - 3:1')
-                print('KONIEC GRY')
-else:
-    print('Wygrałeś! - 1:0')
-    runda2_user.append(input('Podaj kamień, papier czy nożyce: '))
-    print('Komputer wylosował:', runda2_computer[0])
-
-    i = 0
-    while runda2_user[i] == runda2_computer[i]:
-        print('Remis - nadal 1:0')
-        runda2_user.append(input('Podaj kamień, papier czy nożyce: '))
-        i = i+1
-        print('Komputer wylosował:', runda2_computer[i])
-
-    if (runda2_user[-1] == 'kamień' and runda2_computer[i] == 'papier') or (runda2_user[-1] == 'papier' and runda2_computer[i] == 'nożyce') or (runda2_user[-1] == 'nożyce' and runda2_computer[i] == 'kamień'):
-        print('Przegrałeś! - 1:1')
-        runda3_user.append(input('Podaj kamień, papier czy nożyce: '))
-        print('Komputer wylosował:', runda3_computer[0])
-
-        i = 0
-        while runda3_user[i] == runda3_computer[i]:
-            print('Remis - nadal 1:1')
-            runda3_user.append(input('Podaj kamień, papier czy nożyce: '))
-            i = i+1
-            print('Komputer wylosował:', runda3_computer[i])
-
-        if (runda3_user[-1] == 'kamień' and runda3_computer[i] == 'papier') or (runda3_user[-1] == 'papier' and runda3_computer[i] == 'nożyce') or (runda3_user[-1] == 'nożyce' and runda3_computer[i] == 'kamień'):
-            print('Przegrałeś! - 1:2')
-            runda4_user.append(input('Podaj kamień, papier czy nożyce: '))
-            print('Komputer wylosował:', runda4_computer[0])
-
-            i = 0
-            while runda4_user[i] == runda4_computer[i]:
-                print('Remis - nadal 1:2')
-                runda4_user.append(input('Podaj kamień, papier czy nożyce: '))
-                i = i+1
-                print('Komputer wylosował:', runda4_computer[i])
-
-            if (runda4_user[-1] == 'kamień' and runda4_computer[i] == 'papier') or (runda4_user[-1] == 'papier' and runda4_computer[i] == 'nożyce') or (runda4_user[-1] == 'nożyce' and runda4_computer[i] == 'kamień'):
-                print('Przegrałeś! - 1:3')
-                print('KONIEC GRY')
-            else:
-                print('Wygrałeś! - 2:2')
-                runda5_user.append(input('Podaj kamień, papier czy nożyce: '))
-                print('Komputer wylosował:', runda5_computer[0])
-                
-                i = 0
-                while runda5_user[i] == runda5_computer[i]:
-                    print('Remis - nadal 2:2')
-                    runda5_user.append(input('Podaj kamień, papier czy nożyce: '))
-                    i = i+1
-                    print('Komputer wylosował:', runda5_computer[i])
-
-                if (runda5_user[-1] == 'kamień' and runda5_computer[i] == 'papier') or (runda5_user[-1] == 'papier' and runda5_computer[i] == 'nożyce') or (runda5_user[-1] == 'nożyce' and runda5_computer[i] == 'kamień'):
-                    print('Przegrałeś! - 2:3')
-                    print('KONIEC GRY')
-                else:
-                    print('Wygrałeś! - 3:2')
-                    print('KONIEC GRY')
-        else:
-            print('Wygrałeś! - 2:1')
-            runda4_user.append(input('Podaj kamień, papier czy nożyce: '))
-            print('Komputer wylosował:', runda4_computer[0])
-
-            i = 0
-            while runda4_user[i] == runda4_computer[i]:
-                print('Remis - nadal 2:1')
-                runda4_user.append(input('Podaj kamień, papier czy nożyce: '))
-                i = i+1
-                print('Komputer wylosował:', runda4_computer[i])
-
-            if (runda4_user[-1] == 'kamień' and runda4_computer[i] == 'papier') or (runda4_user[-1] == 'papier' and runda4_computer[i] == 'nożyce') or (runda4_user[-1] == 'nożyce' and runda4_computer[i] == 'kamień'):
-                print('Przegrałeś! - 2:2')
-                runda5_user.append(input('Podaj kamień, papier czy nożyce: '))
-                print('Komputer wylosował:', runda5_computer[0])
-                
-                i = 0
-                while runda5_user[i] == runda5_computer[i]:
-                    print('Remis - nadal 2:2')
-                    runda5_user.append(input('Podaj kamień, papier czy nożyce: '))
-                    i = i+1
-                    print('Komputer wylosował:', runda5_computer[i])
-
-                if (runda5_user[-1] == 'kamień' and runda5_computer[i] == 'papier') or (runda5_user[-1] == 'papier' and runda5_computer[i] == 'nożyce') or (runda5_user[-1] == 'nożyce' and runda5_computer[i] == 'kamień'):
-                    print('Przegrałeś! - 2:3')
-                    print('KONIEC GRY')
-                else:
-                    print('Wygrałeś! - 3:2')
-                    print('KONIEC GRY')
-            else:
-                print('Wygrałeś! - 3:1')
-                print('KONIEC GRY')
-    else:
-        print('Wygrałeś! - 2:0')
-        runda3_user.append(input('Podaj kamień, papier czy nożyce: '))
-        print('Komputer wylosował:', runda3_computer[0])
-
-        i = 0
-        while runda3_user[i] == runda3_computer[i]:
-            print('Remis - nadal 2:0')
-            runda3_user.append(input('Podaj kamień, papier czy nożyce: '))
-            i = i+1
-            print('Komputer wylosował:', runda3_computer[i])
-
-        if (runda3_user[-1] == 'kamień' and runda3_computer[i] == 'papier') or (runda3_user[-1] == 'papier' and runda3_computer[i] == 'nożyce') or (runda3_user[-1] == 'nożyce' and runda3_computer[i] == 'kamień'):
-            print('Przegrałeś! - 2:1')
-            runda4_user.append(input('Podaj kamień, papier czy nożyce: '))
-            print('Komputer wylosował:', runda4_computer[0])
-
-            i = 0
-            while runda4_user[i] == runda4_computer[i]:
-                print('Remis - nadal 2:1')
-                runda4_user.append(input('Podaj kamień, papier czy nożyce: '))
-                i = i+1
-                print('Komputer wylosował:', runda4_computer[i])
-
-            if (runda4_user[-1] == 'kamień' and runda4_computer[i] == 'papier') or (runda4_user[-1] == 'papier' and runda4_computer[i] == 'nożyce') or (runda4_user[-1] == 'nożyce' and runda4_computer[i] == 'kamień'):
-                print('Przegrałeś! - 2:2')
-                runda5_user.append(input('Podaj kamień, papier czy nożyce: '))
-                print('Komputer wylosował:', runda5_computer[0])
-                
-                i = 0
-                while runda5_user[i] == runda5_computer[i]:
-                    print('Remis - nadal 2:2')
-                    runda5_user.append(input('Podaj kamień, papier czy nożyce: '))
-                    i = i+1
-                    print('Komputer wylosował:', runda5_computer[i])
-
-                if (runda5_user[-1] == 'kamień' and runda5_computer[i] == 'papier') or (runda5_user[-1] == 'papier' and runda5_computer[i] == 'nożyce') or (runda5_user[-1] == 'nożyce' and runda5_computer[i] == 'kamień'):
-                    print('Przegrałeś! - 2:3')
-                    print('KONIEC GRY')
-                else:
-                    print('Wygrałeś! - 3:2')
-                    print('KONIEC GRY')
-            else:
-                print('Wygrałeś! - 3:1')
-                print('KONIEC GRY')
-        else:
-            print('Wygrałeś! - 3:0')
-            print('KONIEC GRY')
+if __name__ == '__main__':
+    main()
