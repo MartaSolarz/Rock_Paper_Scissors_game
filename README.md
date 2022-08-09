@@ -29,6 +29,6 @@ The code describes a rock paper scissors game for three wins. It allows the user
 
 ### 3. Python modules used. ###
 
-* random
+* ```random```
 
 *Author: Marta Solarz*
